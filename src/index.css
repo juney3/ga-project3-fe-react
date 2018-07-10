@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.header {
+  margin-bottom: 50px;
+}
+
+.latestLists {
+  margin-top: 50px;
+}
+
+.footer {
+  margin-top: 50px;
+}
