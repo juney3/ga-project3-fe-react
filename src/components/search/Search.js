@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, Header, Input } from 'semantic-ui-react';
+import ResultsList from './ResultsList';
 import Results from './Results';
 
 export default class Search extends Component {
@@ -52,11 +53,9 @@ export default class Search extends Component {
           </Button>
         </Form>
 
-        {this.state.results.length > 0 && <Redirect to={{
-            pathname: '/results',
-            state: {results: this.state.results}
-          }}/>
-        }
+        <ResultsList
+          handleInput={this.props.handleInput}
+        />
       </div>
     )
   }

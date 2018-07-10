@@ -8,15 +8,17 @@ import axios from 'axios';
 export default class ListContainer extends Component {
   constructor() {
     super()
-
     this.state={
-      userid: localStorage.user
+      userid: localStorage.user,
+      lists: [],
+      selectedList: []
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.onSelectList = this.onSelectList.bind(this);
   }
 
+  // Function for tracking state changes in inputs fields
   handleInput(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -47,7 +49,7 @@ export default class ListContainer extends Component {
     console.log('The select list is', this.state.selectedList)
   }
 
-  // fetchListData() {
+  // fetchListData(id) {
   //   ListModel.all().then( (res) => {
   //    console.log('Here is the list data', res)
   //    this.setState({
@@ -57,12 +59,9 @@ export default class ListContainer extends Component {
   // }
 
 
-
   componentDidMount() {
     console.log("I am the list container and here is the user id", localStorage.user)
   }
-
-
 
   render() {
 
@@ -71,12 +70,17 @@ export default class ListContainer extends Component {
         <Grid>
           <Grid.Row>
             <Grid.Column width={4}>
-              <MyLists />
+              <MyLists
+                onSelectList={this.state.onSelectList}
+                lists={this.state.lists}
+                selectedList={this.state.selectedList}
+              />
             </Grid.Column>
             <Grid.Column width={12}>
               <ComicList
                 handleInput={this.handleInput}
                 handleSearch={this.handleSearch}
+                selectedList={this.state.selectedList}
               />
               <EditList />
             </Grid.Column >

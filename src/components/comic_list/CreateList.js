@@ -8,7 +8,9 @@ export default class CreateList extends Component {
         <Header as='h4'>Create a reading list</Header>
         <Form.Field>
           <label>List name</label>
-          <Input placeholder="listName" />
+          <Input
+            name="listName"
+            placeholder="listName" />
         </Form.Field>
         <Form.Field
           id='form-textarea-control-description'

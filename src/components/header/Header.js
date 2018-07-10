@@ -11,7 +11,8 @@ export default class Header extends Component {
     let headerItems = [
       <Link to={'/'} key={1}>
         <Menu.Item header>Comic.ly</Menu.Item>
-      </Link>]
+      </Link>
+    ]
 
     if (this.props.isLoggedIn) {
       headerItems.push(
@@ -47,8 +48,14 @@ export default class Header extends Component {
           <Menu.Item> Log in </Menu.Item>
         </Link>
       )
-
     }
+
+    headerItems.push(<Menu.Menu position='right' key={7}>
+      <Menu.Item>
+        About
+      </Menu.Item>
+    </Menu.Menu>)
+    
     return(
       <div className="header">
         <Menu borderless>

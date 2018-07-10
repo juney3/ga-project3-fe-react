@@ -9,13 +9,15 @@ export default class SearchModal extends Component {
         closeIcon onClose={this.closeModal}
         trigger={
           <Button>
-            <Icon link name='plus'/>
+            Add comic
           </Button>
         }
       >
         <Modal.Content>
-          <Search handleInput={this.props.handleInput}
-          handleSearch={this.props.handleSearch}/>
+          <Search
+            handleInput={this.props.handleInput}
+            handleSearch={this.props.handleSearch}
+          />
         </Modal.Content>
       </Modal>
     )

@@ -9,7 +9,7 @@ export default class Footer extends Component {
         <Grid.Column textAlign="center">
           <footer >
             <a href="http://marvel.com" target="new">Data provided by Marvel. © 2018 MARVEL</a>
-            <p>Made with <Icon link name='heart' /> in the SF Bay Area</p>
+            <p>Made with <Icon link name='heart' /> and <Icon link name='coffee' /> in the SF Bay Area</p>
           </footer >
         </Grid.Column>
       </Grid>
