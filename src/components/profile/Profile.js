@@ -5,8 +5,12 @@ export default class Profile extends Component {
   render() {
     return (
       <div className="profileInfo">
-        <Header as='h2'>Welcome, userName!</Header>
-        <Header as='h5'>Here is your user information:</Header>
+        <Header as='h2'>
+          Welcome, userName!
+        </Header>
+        <Header as='h5'>
+          Here is your user information:
+        </Header>
         <p>Name: firstName lastName</p>
         <p>User name: userName</p>
         <p>Email address: email</p>

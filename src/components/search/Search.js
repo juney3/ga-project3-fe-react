@@ -4,29 +4,34 @@ import { Button, Form, Header, Input } from 'semantic-ui-react';
 import Results from './Results';
 import axios from 'axios';
 
+const SEARCH_ROUTE = 'http://localhost:3010/search';
+
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       results: []
     }
-    this.onSearch = this.onSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  onSearch(event) {
-    let url="https://gateway.marvel.com:443/v1/public/characters/1009610/comics?apikey=81e5319b6802c92670e2ef8122cc449e"
-
-
-    // console.log(md5('81e5319b6802c92670e2ef8122cc449e'+Date.now()))
-    axios.get(url)
+  // Function for sending axios call to back end search function
+  handleSearch(event) {
+    event.preventDefault();
+    console.log('Handle search function', this.state.characterName)
+    axios.post(`${SEARCH_ROUTE}`, {
+      characterName: this.state.characterName,
+      startYear: this.state.startYear,
+      endYear: this.state.endYear
+    })
       .then(response => {
-        let data = {
-          results: response.data
-        }
-        this.setState(data);
+        console.log('Here is the response', response.data);
       })
-      .catch(error => console.log(error))
+      .catch(err => console.log('This is a search error', err))
+
   }
+
+
   render() {
     return(
       <div>
@@ -60,7 +65,7 @@ export default class Search extends Component {
           </Form.Group>
           <Button
             type='submit'
-            onClick={this.onSearch}>
+            onClick={this.handleSearch}>
               Search
           </Button>
         </Form>

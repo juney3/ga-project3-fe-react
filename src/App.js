@@ -15,7 +15,7 @@ import LogOut from './components/header/LogOut';
 import Footer from './components/Footer';
 import Routes from './config/routes';
 
-const ROOT_ROUTE = "http://localhost:3010/users"
+const USER_ROUTE = "http://localhost:3010/users"
 
 class App extends Component {
   constructor() {
@@ -77,7 +77,7 @@ class App extends Component {
   handleSignUp(event) {
     console.log("User is signing up");
     event.preventDefault();
-    axios.post(`${ROOT_ROUTE}/signup`, {
+    axios.post(`${USER_ROUTE}/signup`, {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       userName: this.state.userName,
@@ -99,7 +99,7 @@ class App extends Component {
   handleLogIn(event){
     console.log("User is logging in");
     event.preventDefault();
-    axios.post('http://localhost:3010/users/login', {
+    axios.post(`${USER_ROUTE}/login`, {
       email: this.state.email,
       password: this.state.password
     })
