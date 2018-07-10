@@ -5,13 +5,17 @@ import Search from './Search';
 export default class SearchModal extends Component {
   render() {
     return(
-      <Modal trigger={
-        <Button>
-          <Icon link name='plus'/>
-        </Button>}
+      <Modal
+        closeIcon onClose={this.closeModal}
+        trigger={
+          <Button>
+            <Icon link name='plus'/>
+          </Button>
+        }
       >
         <Modal.Content>
-          <Search handleInput={this.props.handleInput}/>
+          <Search handleInput={this.props.handleInput}
+          handleSearch={this.props.handleSearch}/>
         </Modal.Content>
       </Modal>
     )

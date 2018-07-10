@@ -99,7 +99,7 @@ class App extends Component {
   handleLogIn(event){
     console.log("User is logging in");
     event.preventDefault();
-    axios.post(`${USER_ROUTE}/login`, {
+    axios.post('http://localhost:3010/users/login', {
       email: this.state.email,
       password: this.state.password
     })

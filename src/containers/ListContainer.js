@@ -3,6 +3,7 @@ import EditList from '../components/comic_list/EditList';
 import ComicList from '../components/comic_list/ComicList';
 import MyLists from '../components/comic_list/MyLists';
 import { Grid } from 'semantic-ui-react';
+import axios from 'axios';
 
 export default class ListContainer extends Component {
   constructor() {
@@ -12,6 +13,8 @@ export default class ListContainer extends Component {
       userid: localStorage.user
     }
     this.handleInput = this.handleInput.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.onSelectList = this.onSelectList.bind(this);
   }
 
   handleInput(event) {
@@ -19,6 +22,22 @@ export default class ListContainer extends Component {
       [event.target.name]: event.target.value
     })
   }
+
+  // Function for sending axios call to back end search function
+  handleSearch(event) {
+    event.preventDefault();
+    console.log('Handle search function', this.state.characterName)
+    axios.post('http://localhost:3010/search', {
+      characterName: this.state.characterName,
+      startYear: this.state.startYear,
+      endYear: this.state.endYear
+    })
+      .then(response => {
+        console.log('Here is the response', response.data);
+      })
+      .catch(err => console.log('This is a search error', err))
+  }
+
 
   onSelectList(list) {
     console.log('List is clicked!');
@@ -36,6 +55,8 @@ export default class ListContainer extends Component {
   //    })
   //   })
   // }
+
+
 
   componentDidMount() {
     console.log("I am the list container and here is the user id", localStorage.user)
@@ -55,6 +76,7 @@ export default class ListContainer extends Component {
             <Grid.Column width={12}>
               <ComicList
                 handleInput={this.handleInput}
+                handleSearch={this.handleSearch}
               />
               <EditList />
             </Grid.Column >

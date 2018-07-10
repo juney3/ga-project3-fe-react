@@ -11,6 +11,7 @@ export default class ComicList extends Component {
         <ListInfo />
         <SearchModal
           handleInput={this.props.handleInput}
+          handleSearch={this.props.handleSearch}
         />
         <ListComic />
       </div>
