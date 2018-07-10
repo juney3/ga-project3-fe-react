@@ -33,7 +33,7 @@ export default class ListContainer extends Component {
       endYear: this.state.endYear
     })
       .then(response => {
-        console.log('Here is the response', response.data);
+        console.log('Here is the response', response);
       })
       .catch(err => console.log('This is a search error', err))
   }
