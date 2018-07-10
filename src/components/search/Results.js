@@ -10,8 +10,9 @@ export default class Results extends Component {
       <div className="results">
         <Grid centered columns={1}>
           <Grid.Column>
-            <Header as='h2' textAlign="center">Search Results</Header>
-              < ResultsList />
+              < ResultsList
+                searchResults={this.props.searchResults}
+              />
           </Grid.Column>
         </Grid>
       </div>

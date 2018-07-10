@@ -8,7 +8,6 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: [],
       characterName: '',
       startYear: '',
       endYear: ''
@@ -60,6 +59,7 @@ export default class Search extends Component {
         <Results
           handleInput={this.props.handleInput}
           selectedList={this.props.selectedList}
+          searchResults={this.props.searchResults}
         />
       </div>
     )

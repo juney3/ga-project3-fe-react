@@ -18,6 +18,7 @@ export default class SearchModal extends Component {
             handleInput={this.props.handleInput}
             handleSearch={this.props.handleSearch}
             selectedList={this.props.selectedList}
+            searchResults={this.props.searchResults}
           />
         </Modal.Content>
       </Modal>

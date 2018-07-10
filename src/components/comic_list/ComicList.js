@@ -15,6 +15,7 @@ export default class ComicList extends Component {
           handleInput={this.props.handleInput}
           handleSearch={this.props.handleSearch}
           selectedList={this.props.selectedList}
+          searchResults={this.props.searchResults}
         />
         <ListComicContainer
           handleInput={this.props.handleInput}

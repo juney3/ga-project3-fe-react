@@ -11,7 +11,8 @@ export default class ListContainer extends Component {
     this.state={
       userid: localStorage.user,
       lists: [],
-      selectedList: []
+      selectedList: [],
+      searchResults: []
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -26,9 +27,10 @@ export default class ListContainer extends Component {
   }
 
   // Function for sending axios call to back end search function
-  handleSearch(event) {
+  handleSearch (event) {
     event.preventDefault();
     console.log('Handle search function', this.state.characterName)
+    console.log("here is the initial search results state", this.state.searchResults)
     axios.post('http://localhost:3010/search', {
       characterName: this.state.characterName,
       startYear: this.state.startYear,
@@ -36,6 +38,10 @@ export default class ListContainer extends Component {
     })
       .then(response => {
         console.log('Here is the response', response);
+        this.setState({
+          searchResults: response.data
+        });
+        console.log('I set the results in state', this.state.searchResults)
       })
       .catch(err => console.log('This is a search error', err))
   }
@@ -81,6 +87,7 @@ export default class ListContainer extends Component {
                 handleInput={this.handleInput}
                 handleSearch={this.handleSearch}
                 selectedList={this.state.selectedList}
+                searchResults={this.state.searchResults}
               />
               <EditList />
             </Grid.Column >
