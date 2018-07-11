@@ -3,7 +3,6 @@ import { Button, Card, Checkbox, Icon, Image } from 'semantic-ui-react';
 
 export default class ListComic extends Component {
   render() {
-    console.log(this.props.comic.year)
     return (
       <Card>
         <Card.Content extra>
@@ -19,9 +18,9 @@ export default class ListComic extends Component {
           <Card.Description>
             <p>Description: {this.props.comic.description}</p>
           </Card.Description>
-          <Card.Description>
-            User notes
-          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          User notes
         </Card.Content>
         <Card.Content extra>
           <Checkbox label='Finished reading' />

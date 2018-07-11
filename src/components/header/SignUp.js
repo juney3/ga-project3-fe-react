@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, Grid, Header, Input, Message, Segment } from 'semantic-ui-react';
 
 class SignUp extends Component {
+
   render(){
+    let { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/lists'/>
+    }
+
     return(
       <Grid centered columns={2}>
         <Grid.Column>

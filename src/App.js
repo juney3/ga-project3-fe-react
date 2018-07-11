@@ -29,7 +29,8 @@ class App extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      isLoggedIn: false
+      isLoggedIn: false,
+      redirect: false
     }
 
     // Bind methods
@@ -63,7 +64,8 @@ class App extends Component {
       password: '',
       confirmPassword: '',
       isLoggedIn: false,
-      user: ''
+      user: '',
+      redirect: true
     })
     localStorage.clear()
   }
@@ -90,7 +92,8 @@ class App extends Component {
         console.log("Here is the user id from the response", response.data.user);
         this.setState({
           isLoggedIn: true,
-          user: response.data.user
+          user: response.data.user,
+          redirect: true
         })
       })
       .catch(err => console.log("This is a user signup error", err))

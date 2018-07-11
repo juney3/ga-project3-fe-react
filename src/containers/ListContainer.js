@@ -12,7 +12,18 @@ export default class ListContainer extends Component {
       userid: localStorage.user,
       lists: [],
       selectedList: [],
-      searchResults: []
+      searchResults: [],
+      listName: '',
+      listDescription: '',
+      listIsPublic: false,
+      comicMarvelId: '',
+      comicTitle: '',
+      comicIssueNumber: '',
+      comicDescription: '',
+      comicPageCount: '',
+      comicResourceUrl: '',
+      comicCoverImageUrl: '',
+      comicOnSaleDate: ''
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -80,6 +91,9 @@ export default class ListContainer extends Component {
                 onSelectList={this.state.onSelectList}
                 lists={this.state.lists}
                 selectedList={this.state.selectedList}
+                listName={this.state.listName}
+                listDescription={this.state.listDescription}
+                listIsPublic={this.state.isPublic}
               />
             </Grid.Column>
             <Grid.Column width={12}>
@@ -88,6 +102,14 @@ export default class ListContainer extends Component {
                 handleSearch={this.handleSearch}
                 selectedList={this.state.selectedList}
                 searchResults={this.state.searchResults}
+                comicMarvelId={this.state.comicMarvelId}
+                comicTitle={this.state.comicTitle}
+                comicIssueNumber={this.state.comicIssueNumber}
+                comicDescription={this.state.comicDescription},
+                comicPageCount={this.state.comicPageCount},
+                comicResourceUrl={this.state.comicResourceUrl},
+                comicCoverImageUrl={this.state.comicCoverImageUrl},
+                comicOnSaleDate={this.comicOnSaleDate}
               />
               <EditList />
             </Grid.Column >
