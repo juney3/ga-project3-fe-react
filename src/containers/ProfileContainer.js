@@ -9,15 +9,21 @@ class ProfileContainer extends Component {
     super();
     this.state={
       user: localStorage.user,
-      userData: ''
+      userData: '',
+      joinDate: '',
+      numLists: '',
     }
   }
 
   getUser(){
     axios.get(`${ROOT_ROUTE}/users/${this.state.user}`)
     .then(response => {
+      let joinDate = response.data.createdAt.slice(0,10)
+      let numLists = response.data.lists.length;
       this.setState({
-        userData: response.data
+        userData: response.data,
+        joinDate: joinDate,
+        numLists: numLists
       })
     })
     .catch(err => {
@@ -25,10 +31,18 @@ class ProfileContainer extends Component {
     })
   }
 
+  componentWillMount() {
+    this.getUser();
+  }
+
   render() {
     return(
       <div>
-        <Profile userData={this.state.userData} />
+        <Profile
+          userData={this.state.userData}
+          joinDate={this.state.joinDate}
+          numLists={this.state.numLists}
+        />
       </div>
     )
   }

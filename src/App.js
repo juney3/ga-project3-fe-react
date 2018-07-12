@@ -39,20 +39,6 @@ class App extends Component {
     this.handleSignUp = this.handleSignUp.bind(this);
   }
 
-  // Lifecycle methods
-  componentDidMount() {
-    if (localStorage.token) {
-      this.setState({
-        isLoggedIn: true
-      })
-    }
-    else {
-      this.setState({
-        isLoggedIn: false
-      })
-    }
-  }
-
   // User auth methods
   handleLogOut() {
     this.setState({
@@ -99,7 +85,6 @@ class App extends Component {
   }
 
   handleLogIn(event){
-    console.log("User is logging in");
     event.preventDefault();
     axios.post('http://localhost:3010/users/login', {
       email: this.state.email,
@@ -115,6 +100,31 @@ class App extends Component {
         })
       })
       .catch(err => console.log("This is a login error", err))
+  }
+
+  // Get community lists for display on landing page
+  getRecentPublicLists() {
+    axios.post('http://localhost:3010/lists/public')
+      .then(response => {
+        console.log("public lists received!", response.data)
+      })
+      .catch(err => {
+        console.log("this is a public list retrieval error", err)
+      })
+  }
+
+  // Lifecycle methods
+  componentDidMount() {
+    if (localStorage.token) {
+      this.setState({
+        isLoggedIn: true
+      })
+    }
+    else {
+      this.setState({
+        isLoggedIn: false
+      })
+    }
   }
 
   // Render method

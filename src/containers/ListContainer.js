@@ -157,7 +157,7 @@ export default class ListContainer extends Component {
       return(
         <div>
           <Grid>
-            <Grid.Row>
+            <Grid.Row centered>
               <Grid.Column width={4}>
                 <MyLists
                   handleInput={this.handleInput}
@@ -168,7 +168,7 @@ export default class ListContainer extends Component {
                   selectedList={this.state.selectedList}
                 />
               </Grid.Column>
-              <Grid.Column width={12}>
+              <Grid.Column width={10}>
                 <ComicList
                   handleInput={this.handleInput}
                   handleSearch={this.handleSearch}
@@ -199,7 +199,7 @@ export default class ListContainer extends Component {
                 />
               </Grid.Column>
               <Grid.Column width={12}>
-                <p>Select a list!</p>
+                <p>Create or select a list to get started!</p>
               </Grid.Column >
             </Grid.Row>
           </Grid>

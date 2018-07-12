@@ -5,7 +5,7 @@ export default class ListComic extends Component {
   render() {
 
     return (
-      <Card>
+      <Card fluid>
         <Card.Content extra>
             <Button icon><Icon link name='edit' /></Button>
             <Button icon><Icon link name='close' /></Button>
