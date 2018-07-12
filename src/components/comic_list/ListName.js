@@ -10,7 +10,6 @@ export default class ListName extends Component {
   // Function to select one list.
   selectList() {
     this.props.onSelectList(this.props.oneList)
-    console.log('OMG I selected a listName!', this.props.oneList)
   }
 
   render() {

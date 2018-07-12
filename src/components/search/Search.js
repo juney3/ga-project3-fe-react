@@ -58,9 +58,10 @@ export default class Search extends Component {
           </Grid>
 
           <Results
-            handleInput={this.props.handleInput}
             selectedList={this.props.selectedList}
             searchResults={this.props.searchResults}
+            selectedComic={this.props.selectedComic}
+            onAddToList={this.props.onAddToList}
           />
         </div>
         <Grid centered columns={2}>

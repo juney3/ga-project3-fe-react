@@ -12,6 +12,8 @@ export default class Results extends Component {
           <Grid.Column>
               < ResultsList
                 searchResults={this.props.searchResults}
+                selectedComic={this.props.selectedComic}
+                onAddToList={this.props.onAddToList}
               />
           </Grid.Column>
         </Grid>

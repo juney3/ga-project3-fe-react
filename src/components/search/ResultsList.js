@@ -6,7 +6,12 @@ class ResultsList extends Component {
   render() {
     let resultComics = this.props.searchResults.map((result, index) => {
       return(
-        <ResultComic result={result} key={index} />
+        <ResultComic
+          result={result}
+          key={index}
+          selectedComic={this.props.selectedComic}
+          onAddToList={this.props.onAddToList}
+        />
       )
     })
     return(

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Header, Icon } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import CreateListModal from './CreateListModal';
 import ListName from './ListName';
 

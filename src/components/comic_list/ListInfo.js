@@ -14,7 +14,7 @@ export default class ListInfo extends Component {
     return(
       <div className="listInfo">
         <Header as={'h2'}>{this.props.selectedList.listName}</Header>
-        <Header as={'h5'}>{this.props.selectedList.listDescription}</Header>
+        <Header as={'h4'}>{this.props.selectedList.listDescription}</Header>
         <p>This list is {shared}</p>
       </div>
     )

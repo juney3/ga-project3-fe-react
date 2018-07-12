@@ -13,15 +13,6 @@ let comics = [
 ]
 export default class ListComicContainer extends Component {
 
-  constructor() {
-    super();
-    this.state={
-
-    }
-  }
-
-
-
   render() {
       let listComics = comics.map((comic, index) => {
         console.log(comic.title)
