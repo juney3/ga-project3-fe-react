@@ -20,7 +20,7 @@ export default class ResultComic extends Component {
     let imgUrl=`${this.props.result.thumbnail.path}/portrait_xlarge.${this.props.result.thumbnail.extension}`
 
     return(
-      <Card fluid>
+      <Card>
         <Card.Content>
           <Card.Description>
             <a href={comicUrl} target='new'>

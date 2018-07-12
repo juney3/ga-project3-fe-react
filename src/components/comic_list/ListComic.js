@@ -3,6 +3,7 @@ import { Button, Card, Checkbox, Icon, Image } from 'semantic-ui-react';
 
 export default class ListComic extends Component {
   render() {
+
     return (
       <Card>
         <Card.Content extra>
@@ -10,17 +11,31 @@ export default class ListComic extends Component {
             <Button icon><Icon link name='close' /></Button>
         </Card.Content>
         <Card.Content>
-          <Image floated='right' size='small' src='img.url' />
-          <Card.Header>{this.props.comic.title}</Card.Header>
           <Card.Description>
-            <p>Issue #{this.props.comic.issue} - Year: {this.props.comic.year} </p>
+            <a href={this.props.comic.comicResourceUrl} target='new'>
+              <Card.Header as='h2'>
+                {this.props.comic.comicTitle}
+              </Card.Header>
+            </a>
           </Card.Description>
           <Card.Description>
-            <p>Description: {this.props.comic.description}</p>
+            <Image floated='right' size='small' src={this.props.comic.comicCoverImageUrl} />
+            <Card.Header as='h5'>
+              Issue #: {this.props.comic.comicIssueNumber}
+            </Card.Header>
+            <Card.Header as='h5'>
+              Sale date: {this.props.comic.comicOnSaleDate}
+            </Card.Header>
+            <Card.Header as='h5'>
+              Page count: {this.props.comic.comicPageCount}
+            </Card.Header>
+            <Card.Header as='h5'>
+              Print price: ${this.props.comic.comicPrintPrice}
+            </Card.Header>
           </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          User notes
+          <Card.Description>
+            {this.props.comic.comicDescription}
+          </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <Checkbox label='Finished reading' />

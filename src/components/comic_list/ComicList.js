@@ -4,7 +4,7 @@ import ListComicContainer from './ListComicContainer';
 import SearchModal from '../search/SearchModal'
 
 export default class ComicList extends Component {
-  
+
   render() {
     return (
       <div>

@@ -7,7 +7,6 @@ class ProfileContainer extends Component {
     return(
       <div>
         <Profile />
-        <EditProfile />
       </div>
     )
   }

@@ -26,7 +26,8 @@ export default class ListContainer extends Component {
       comicOnSaleDate: '',
       comicIsRead: false,
       selectedComic: [],
-      openModal: false
+      openModal: false,
+      showReadingList: false
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -91,7 +92,8 @@ export default class ListContainer extends Component {
   // Function to set state to a selected list for display
   onSelectList(list) {
     this.setState({
-      selectedList: list
+      selectedList: list,
+      showReadingList: true
     })
     console.log("on select function registering list", list)
   }
@@ -136,10 +138,13 @@ export default class ListContainer extends Component {
       comicOnSaleDate: date,
       comicPrintPrice: printPrice,
       list: list,
-      user: this.state.user
+      user: this.state.user,
     })
       .then(response => {
-        console.log("response received!")
+        let updatedList = this.state.selectedList
+        this.setState({
+          selectedList: updatedList
+        })
       })
       .catch(error => console.log('Error saving a comic', error))
   }
@@ -155,33 +160,58 @@ export default class ListContainer extends Component {
   }
 
   render() {
-    return(
-      <div>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={4}>
-              <MyLists
-                handleInput={this.handleInput}
-                handleCheckbox={this.handleCheckbox}
-                createList={this.createList}
-                onSelectList={this.onSelectList}
-                lists={this.state.lists}
-                selectedList={this.state.selectedList}
-              />
-            </Grid.Column>
-            <Grid.Column width={12}>
-              <ComicList
-                handleInput={this.handleInput}
-                handleSearch={this.handleSearch}
-                selectedList={this.state.selectedList}
-                searchResults={this.state.searchResults}
-                selectedComic={this.state.selectedComic}
-                onAddToList={this.onAddToList}
-              />
-            </Grid.Column >
-          </Grid.Row>
-        </Grid>
-      </div>
-    )
+    if (this.state.showReadingList) {
+      return(
+        <div>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <MyLists
+                  handleInput={this.handleInput}
+                  handleCheckbox={this.handleCheckbox}
+                  createList={this.createList}
+                  onSelectList={this.onSelectList}
+                  lists={this.state.lists}
+                  selectedList={this.state.selectedList}
+                />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <ComicList
+                  handleInput={this.handleInput}
+                  handleSearch={this.handleSearch}
+                  selectedList={this.state.selectedList}
+                  searchResults={this.state.searchResults}
+                  selectedComic={this.state.selectedComic}
+                  onAddToList={this.onAddToList}
+                />
+              </Grid.Column >
+            </Grid.Row>
+          </Grid>
+        </div>
+      )
+    }
+    else {
+      return(
+        <div>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <MyLists
+                  handleInput={this.handleInput}
+                  handleCheckbox={this.handleCheckbox}
+                  createList={this.createList}
+                  onSelectList={this.onSelectList}
+                  lists={this.state.lists}
+                  selectedList={this.state.selectedList}
+                />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <p>Select a list!</p>
+              </Grid.Column >
+            </Grid.Row>
+          </Grid>
+        </div>
+      )
+    }
   }
 }
