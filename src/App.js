@@ -5,7 +5,6 @@ import {
   Switch
 } from 'react-router-dom';
 import axios from 'axios'
-import { Icon } from 'semantic-ui-react';
 
 // Import from components and config
 import Header from './components/header/Header';

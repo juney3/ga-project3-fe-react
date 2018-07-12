@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
 export default class Header extends Component {
-  componentDidMount() {
-    console.log("I am the header and here is the user id", localStorage.user)
-  }
   render() {
-
     let headerItems = [
       <Link to={'/'} key={1}>
         <Menu.Item header>Comic.ly</Menu.Item>

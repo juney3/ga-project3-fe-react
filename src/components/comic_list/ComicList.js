@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ListComic from './ListComic';
 import ListInfo from './ListInfo';
 import ListComicContainer from './ListComicContainer';
 import SearchModal from '../search/SearchModal'
-import { Button, Icon } from 'semantic-ui-react';
 
 export default class ComicList extends Component {
 

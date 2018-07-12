@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Icon, Modal } from 'semantic-ui-react';
+import { Button, Modal } from 'semantic-ui-react';
 import CreateList from './CreateList';
 
 export default class CreateListModal extends Component {

@@ -41,7 +41,7 @@ export default class ResultComic extends Component {
               Page count: {this.props.result.pageCount}
             </Card.Header>
             <Card.Header as='h5'>
-              Print price: {printPrice}
+              Print price: ${printPrice}
             </Card.Header>
           </Card.Description>
           <Card.Description>

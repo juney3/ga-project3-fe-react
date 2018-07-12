@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Icon, Modal } from 'semantic-ui-react';
+import { Button, Modal } from 'semantic-ui-react';
 import Search from './Search';
 
 export default class SearchModal extends Component {

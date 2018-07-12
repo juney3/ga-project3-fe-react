@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, Grid, Header, Input } from 'semantic-ui-react';
-import ResultsList from './ResultsList';
 import Results from './Results';
 
 export default class Search extends Component {

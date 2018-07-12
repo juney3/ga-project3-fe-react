@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { Button, Header } from 'semantic-ui-react';
-import Landing from '../Landing';
+import { Redirect } from 'react-router-dom';
 
 export default class Logout extends Component {
 

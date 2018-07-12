@@ -3,19 +3,22 @@ import { Header } from 'semantic-ui-react';
 import CreateListModal from './CreateListModal';
 import ListName from './ListName';
 
+let listNames = ''
 
 export default class MyLists extends Component {
   render() {
-    let listNames = this.props.lists.map((oneList, index) => {
-      return(
-        <ListName
-          oneList={oneList}
-          key={index}
-          onSelectList={this.props.onSelectList}
-          selectedList={this.props.selectedList}
-        />
-      )
-    })
+    if (this.props.lists) {
+      listNames = this.props.lists.map((oneList, index) => {
+        return(
+          <ListName
+            oneList={oneList}
+            key={index}
+            onSelectList={this.props.onSelectList}
+            selectedList={this.props.selectedList}
+          />
+        )
+      })
+    }
     return(
       <div>
         <Header as='h2'>My Lists</Header>

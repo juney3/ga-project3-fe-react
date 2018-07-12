@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import EditList from '../components/comic_list/EditList';
 import ComicList from '../components/comic_list/ComicList';
 import MyLists from '../components/comic_list/MyLists';
 import { Grid } from 'semantic-ui-react';
 import axios from 'axios';
+const ROOT_ROUTE = 'http://localhost:3010'
+const USER_ID = localStorage.user
+
 
 export default class ListContainer extends Component {
   constructor() {
@@ -55,21 +57,23 @@ export default class ListContainer extends Component {
 
   // Function to get user lists
   getUserLists() {
-    let userId = localStorage.user
-    axios.get(`http://localhost:3010/lists/user/${userId}`)
+    axios.get(`${ROOT_ROUTE}/lists/user/${USER_ID}`)
     .then(response => {
-      this.setState({ lists: response.data })
+      if (response.data !== []) {
+        this.setState({ lists: response.data })
+      }
     })
     .catch(error => console.log('Error retrieving lists', error))
   }
 
   // Function to create a comic reading list
   createList() {
-    axios.post('http://localhost:3010/lists', {
+    console.log(USER_ID)
+    axios.post(`${ROOT_ROUTE}/lists`, {
       listName: this.state.listName,
       listDescription: this.state.listDescription,
       listIsPublic: this.state.listIsPublic,
-      user: localStorage.user
+      user: USER_ID
     })
     .then(response => {
       let tempList = this.state.lists;
@@ -92,7 +96,7 @@ export default class ListContainer extends Component {
   // Function for sending axios call to back end search function
   handleSearch (event) {
     event.preventDefault();
-    axios.post('http://localhost:3010/search', {
+    axios.post(`${ROOT_ROUTE}/search`, {
       characterName: this.state.characterName,
       startYear: this.state.startYear,
       endYear: this.state.endYear
@@ -108,8 +112,33 @@ export default class ListContainer extends Component {
 
   // Function to add a comic from the search results to the reading list
   onAddToList(comic) {
-    console.log("Add to list was clicked!")
-    console.log("on add to list has a comic", comic);
+    console.log("here is the selected comic", comic)
+    console.log("here is the selected list", this.state.selectedList);
+    console.log("add to list function, here is the selected list id", this.state.selectedList._id)
+    console.log("add to list function, here is the selected comic Marvel id", comic.id)
+    let resourceUrl = comic.urls[0].url
+    let coverImage=`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`
+    let date = comic.dates[0].date.substring(0,10)
+    let printPrice = comic.prices[0].price
+    let list =this.state.selectedList._id
+
+    axios.post(`${ROOT_ROUTE}/comics`, {
+      comicMarvelId: comic.id,
+      comicTitle: comic.title,
+      comicIssueNumber: comic.issueNumber,
+      comicDescription: comic.description,
+      comicPageCount: comic.pageCount,
+      comicResourceUrl: resourceUrl,
+      comicCoverImageUrl: coverImage,
+      comicOnSaleDate: date,
+      comicPrintPrice: printPrice,
+      list: list,
+      user: USER_ID
+    })
+      .then(response => {
+        console.log("response received!")
+      })
+      .catch(error => console.log('Error saving a comic', error))
   }
 
 // Lifecycle methods

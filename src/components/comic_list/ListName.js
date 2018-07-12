@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Header, Image } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 
 export default class ListName extends Component {
   constructor() {

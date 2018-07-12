@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Grid, Header } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import ResultsList from './ResultsList';
-import SearchModal from './SearchModal';
 
 export default class Results extends Component {
   render() {
