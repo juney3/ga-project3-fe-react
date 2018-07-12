@@ -9,8 +9,9 @@ export default class ListContainer extends Component {
   constructor() {
     super()
     this.state={
-      userid: localStorage.user,
+      user: localStorage.user,
       lists: [],
+      pleaseRerender: [],
       selectedList: [],
       searchResults: [],
       listName: '',
@@ -23,61 +24,103 @@ export default class ListContainer extends Component {
       comicPageCount: '',
       comicResourceUrl: '',
       comicCoverImageUrl: '',
-      comicOnSaleDate: ''
+      comicOnSaleDate: '',
+      comicIsRead: false,
+      openModal: false
     }
     this.handleInput = this.handleInput.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.onSelectList = this.onSelectList.bind(this);
+    this.createList = this.createList.bind(this);
   }
 
-  // Function for tracking state changes in inputs fields
+  // Functions for tracking state changes in input fields and checkbox
   handleInput(event) {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
+  handleCheckbox(event, result) {
+    console.log("here is the result", result)
+    if (result.checked === true) {
+      this.setState({ listIsPublic: true })
+    }
+    else {
+      this.setState({ listIsPublic: false })
+    }
+  }
+
+  // Function to get user lists
+  getUserLists() {
+    let userId = localStorage.user
+    axios.get(`http://localhost:3010/lists/user/${userId}`)
+    .then(response => {
+      console.log(response)
+      this.setState({ lists: response.data })
+    })
+    .catch(error => console.log('Error retrieving lists', error))
+  }
+
+  // Function to create a comic reading list
+  createList() {
+    axios.post('http://localhost:3010/lists', {
+      listName: this.state.listName,
+      listDescription: this.state.listDescription,
+      listIsPublic: this.state.listIsPublic,
+      user: localStorage.user
+    })
+    .then(response => {
+      let tempList = this.state.lists;
+      console.log(response);
+      tempList.push(response.data)
+      console.log(tempList);
+      this.setState({
+        lists: tempList,
+        openModal: false
+      })
+    })
+    .catch(error => console.log('Error creating reading list', error))
+  }
+
+  // Function to set state to a selected list for display
+  onSelectList(list) {
+    console.log('List is clicked!');
+    console.log(list);
+
+    this.setState({
+      selectedList: list
+    })
+
+    console.log('The selected list is', this.state.selectedList)
+
+  }
+
   // Function for sending axios call to back end search function
   handleSearch (event) {
     event.preventDefault();
-    console.log('Handle search function', this.state.characterName)
-    console.log("here is the initial search results state", this.state.searchResults)
     axios.post('http://localhost:3010/search', {
       characterName: this.state.characterName,
       startYear: this.state.startYear,
       endYear: this.state.endYear
     })
       .then(response => {
-        console.log('Here is the response', response);
         this.setState({
           searchResults: response.data
         });
         console.log('I set the results in state', this.state.searchResults)
       })
-      .catch(err => console.log('This is a search error', err))
+      .catch(error => console.log('This is a search error', error))
   }
 
-
-  onSelectList(list) {
-    console.log('List is clicked!');
-    this.setState({
-      selectedList: list
-    })
-    console.log('The select list is', this.state.selectedList)
+// Lifecycle methods
+  componentWillMount() {
+    this.getUserLists();
   }
-
-  // fetchListData(id) {
-  //   ListModel.all().then( (res) => {
-  //    console.log('Here is the list data', res)
-  //    this.setState({
-  //      lists: res.data
-  //    })
-  //   })
-  // }
-
 
   componentDidMount() {
-    console.log("I am the list container and here is the user id", localStorage.user)
+    console.log("I am the list container and here is the user id", this.state.user)
   }
 
   render() {
@@ -88,12 +131,12 @@ export default class ListContainer extends Component {
           <Grid.Row>
             <Grid.Column width={4}>
               <MyLists
-                onSelectList={this.state.onSelectList}
+                handleInput={this.handleInput}
+                handleCheckbox={this.handleCheckbox}
+                createList={this.createList}
+                onSelectList={this.onSelectList}
                 lists={this.state.lists}
                 selectedList={this.state.selectedList}
-                listName={this.state.listName}
-                listDescription={this.state.listDescription}
-                listIsPublic={this.state.isPublic}
               />
             </Grid.Column>
             <Grid.Column width={12}>
@@ -102,14 +145,6 @@ export default class ListContainer extends Component {
                 handleSearch={this.handleSearch}
                 selectedList={this.state.selectedList}
                 searchResults={this.state.searchResults}
-                comicMarvelId={this.state.comicMarvelId}
-                comicTitle={this.state.comicTitle}
-                comicIssueNumber={this.state.comicIssueNumber}
-                comicDescription={this.state.comicDescription},
-                comicPageCount={this.state.comicPageCount},
-                comicResourceUrl={this.state.comicResourceUrl},
-                comicCoverImageUrl={this.state.comicCoverImageUrl},
-                comicOnSaleDate={this.comicOnSaleDate}
               />
               <EditList />
             </Grid.Column >

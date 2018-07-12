@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Header, Image } from 'semantic-ui-react';
 
-export default class ListName extends Component {
+export default class LandingList extends Component {
   constructor() {
     super();
     this.selectList = this.selectList.bind(this);
@@ -15,9 +15,9 @@ export default class ListName extends Component {
 
   render() {
     return (
-      <Card className="oneList" onClick={this.selectList}>
+      <Card className="oneList">
         <Card.Content>
-          <Card.Header as={'h5'}>{this.props.oneList.listName}</Card.Header>
+          <Card.Header as={'h5'}>ListName</Card.Header>
         </Card.Content>
       </Card>
     )

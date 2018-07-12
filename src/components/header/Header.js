@@ -55,9 +55,9 @@ export default class Header extends Component {
         About
       </Menu.Item>
     </Menu.Menu>)
-    
+
     return(
-      <div className="header">
+      <div className="pageHeader">
         <Menu borderless>
           {headerItems}
         </Menu>

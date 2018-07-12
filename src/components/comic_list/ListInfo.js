@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+import { Header } from 'semantic-ui-react';
 
 export default class ListInfo extends Component {
   render() {
+    let shared;
+    if (this.props.selectedList.listIsPublic) {
+      shared = 'is shared.'
+    }
+    else {
+      shared = 'is private.'
+    }
+
     return(
       <div className="listInfo">
-        <h3>listName</h3>
-        <p>listDescription</p>
-        <p>This list is shared/not shared</p>
+        <Header as={'h2'}>{this.props.selectedList.listName}</Header>
+        <Header as={'h5'}>{this.props.selectedList.listDescription}</Header>
+        <p>This list is {shared}</p>
       </div>
     )
   }

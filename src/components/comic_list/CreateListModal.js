@@ -3,10 +3,12 @@ import { Button, Icon, Modal } from 'semantic-ui-react';
 import CreateList from './CreateList';
 
 export default class CreateListModal extends Component {
+  handleOpen = () => this.setState({ openModal: true })
+
   render() {
     return(
       <Modal
-        closeIcon onClose={this.closeModal}
+        onClick={this.handleOpen}
         trigger={
           <Button>
             Create list
@@ -16,7 +18,8 @@ export default class CreateListModal extends Component {
         <Modal.Content>
           <CreateList
             handleInput={this.props.handleInput}
-            handleSearch={this.props.handleSearch}
+            handleCheckbox={this.props.handleCheckbox}
+            createList={this.props.createList}
           />
         </Modal.Content>
       </Modal>

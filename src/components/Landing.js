@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Header } from 'semantic-ui-react';
-import ListName from './comic_list/ListName';
+import LandingList from './LandingList';
 
 export default class Landing extends Component {
   render() {
@@ -15,8 +15,8 @@ export default class Landing extends Component {
               <Grid.Row>
                 <div className="latestLists">
                   <Header as='h3'>Recent Lists</Header>
-                  < ListName />
-                  < ListName />
+                  < LandingList />
+                  < LandingList />
                 </div>
               </Grid.Row>
             </Grid.Column>

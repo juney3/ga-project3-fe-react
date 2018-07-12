@@ -5,7 +5,7 @@ import { Button, Form, Grid, Header, Input, Message, Segment } from 'semantic-ui
 class SignUp extends Component {
 
   render(){
-    let { redirect } = this.state;
+    let { redirect } = this.state.redirect;
 
     if (redirect) {
       return <Redirect to='/lists'/>
