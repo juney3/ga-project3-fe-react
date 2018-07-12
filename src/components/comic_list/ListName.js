@@ -9,8 +9,11 @@ export default class ListName extends Component {
 
   // Function to select one list.
   selectList() {
+    console.log('list clicked')
     this.props.onSelectList(this.props.oneList)
+    console.log('list selected', this.props.oneList)
   }
+
 
   render() {
     return (

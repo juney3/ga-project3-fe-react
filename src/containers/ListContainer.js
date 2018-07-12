@@ -4,8 +4,6 @@ import MyLists from '../components/comic_list/MyLists';
 import { Grid } from 'semantic-ui-react';
 import axios from 'axios';
 const ROOT_ROUTE = 'http://localhost:3010'
-const USER_ID = localStorage.user
-
 
 export default class ListContainer extends Component {
   constructor() {
@@ -57,10 +55,14 @@ export default class ListContainer extends Component {
 
   // Function to get user lists
   getUserLists() {
-    axios.get(`${ROOT_ROUTE}/lists/user/${USER_ID}`)
+    axios.get(`${ROOT_ROUTE}/lists/user/${this.state.user}`)
     .then(response => {
+      console.log(response.data)
       if (response.data !== []) {
         this.setState({ lists: response.data })
+      }
+      else {
+        this.setState({ lists: 'No lists yet.'})
       }
     })
     .catch(error => console.log('Error retrieving lists', error))
@@ -68,12 +70,12 @@ export default class ListContainer extends Component {
 
   // Function to create a comic reading list
   createList() {
-    console.log(USER_ID)
+    console.log(this.state.user)
     axios.post(`${ROOT_ROUTE}/lists`, {
       listName: this.state.listName,
       listDescription: this.state.listDescription,
       listIsPublic: this.state.listIsPublic,
-      user: USER_ID
+      user: this.state.user
     })
     .then(response => {
       let tempList = this.state.lists;
@@ -91,6 +93,7 @@ export default class ListContainer extends Component {
     this.setState({
       selectedList: list
     })
+    console.log("on select function registering list", list)
   }
 
   // Function for sending axios call to back end search function
@@ -133,7 +136,7 @@ export default class ListContainer extends Component {
       comicOnSaleDate: date,
       comicPrintPrice: printPrice,
       list: list,
-      user: USER_ID
+      user: this.state.user
     })
       .then(response => {
         console.log("response received!")
@@ -144,6 +147,11 @@ export default class ListContainer extends Component {
 // Lifecycle methods
   componentWillMount() {
     this.getUserLists();
+  }
+
+  componentDidMount() {
+    console.log(this.state.user)
+    console.log(this.state.selectedList)
   }
 
   render() {
