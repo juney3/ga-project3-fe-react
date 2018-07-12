@@ -58,7 +58,6 @@ export default class ListContainer extends Component {
   getUserLists() {
     axios.get(`${ROOT_ROUTE}/lists/user/${this.state.user}`)
     .then(response => {
-      console.log(response.data)
       if (response.data !== []) {
         this.setState({ lists: response.data })
       }
@@ -110,7 +109,6 @@ export default class ListContainer extends Component {
         this.setState({
           searchResults: response.data
         });
-        console.log('I set the results in state', this.state.searchResults)
       })
       .catch(error => console.log('This is a search error', error))
   }
@@ -152,11 +150,6 @@ export default class ListContainer extends Component {
 // Lifecycle methods
   componentWillMount() {
     this.getUserLists();
-  }
-
-  componentDidMount() {
-    console.log(this.state.user)
-    console.log(this.state.selectedList)
   }
 
   render() {

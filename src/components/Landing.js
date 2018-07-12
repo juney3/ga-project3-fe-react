@@ -14,7 +14,7 @@ export default class Landing extends Component {
               </Grid.Row>
               <Grid.Row>
                 <div className="latestLists">
-                  <Header as='h3'>Recent Lists</Header>
+                  <Header as='h3'>Recent Lists from the Comic.ly Community</Header>
                   < LandingList />
                   < LandingList />
                 </div>

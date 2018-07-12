@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
 import ListComic from './ListComic';
 
 export default class ListComicContainer extends Component {
@@ -12,7 +11,6 @@ export default class ListComicContainer extends Component {
     })
     return (
       <div>
-        <Header as='h3'>Comics: </Header>
         {listComics}
       </div>
     )
