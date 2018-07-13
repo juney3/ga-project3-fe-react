@@ -57,11 +57,9 @@ export default class Header extends Component {
     )
 
     return(
-      <div className="pageHeader">
-        <Menu borderless>
+        <Menu fixed='top' borderless size='massive'>
           {headerItems}
         </Menu>
-      </div>
     )
   }
 }

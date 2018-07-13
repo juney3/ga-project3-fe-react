@@ -6,7 +6,7 @@ export default class ListComic extends Component {
     let date = this.props.comic.comicOnSaleDate.slice(0, 10);
 
     return (
-      <Card fluid>
+      <Card >
         <Card.Content extra>
             <Button icon><Icon link name='edit' /></Button>
             <Button icon><Icon link name='close' /></Button>

@@ -6,6 +6,7 @@ class SignUp extends Component {
 
   render(){
     return(
+      <div className='signUp'>
       <Grid centered columns={2}>
         <Grid.Column>
           <Segment>
@@ -79,6 +80,7 @@ class SignUp extends Component {
           </Segment>
         </Grid.Column>
       </Grid>
+      </div>
     )
   }
 

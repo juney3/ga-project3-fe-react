@@ -28,6 +28,8 @@ export default class MyLists extends Component {
             createList={this.props.createList}
             lists={this.props.lists}
           />
+          <div className="spacer">
+          </div>
         {listNames}
       </div>
     )

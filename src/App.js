@@ -40,6 +40,7 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleLogIn = this.handleLogIn.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.getNewPublicList=this.getNewPublicList.bind(this);
   }
 
   // User auth methods
@@ -95,7 +96,7 @@ class App extends Component {
       .then(response => {
         localStorage.token = response.data.token;
         localStorage.user = response.data.user;
-        console.log("Here is the user id from the response", response.data.user);
+
         this.setState({
           isLoggedIn: true,
           user: response.data.user
@@ -105,7 +106,7 @@ class App extends Component {
   }
 
   // Get community lists for display on landing page
-  getRecentPublicLists() {
+  getNewPublicLists() {
     axios.get('http://localhost:3010/lists/public')
       .then(response => {
         this.setState({
@@ -117,10 +118,19 @@ class App extends Component {
       })
   }
 
+  // Get new public list from ListContainer component
+  getNewPublicList(newPublicList) {
+    let tempRecentList = this.state.newPublicLists;
+    tempRecentList.push(newPublicList);
+    this.setState({
+      recentPublicLists: tempRecentList
+    })
+  }
+
   // Lifecycle methods
 
   componentWillMount() {
-    this.getRecentPublicLists()
+    this.getNewPublicLists()
   }
 
   componentDidMount() {
@@ -140,13 +150,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header">
           < Header
             isLoggedIn={this.state.isLoggedIn}
             user={this.state.user}
             newPublicLists={this.state.newPublicLists}
+            getNewPublicList={this.state.getNewPublicList}
+            fixed='top'
           />
-        </div>
         <div className="main">
           { Routes }
           <Switch>
@@ -155,7 +165,9 @@ class App extends Component {
                 return (
                   <Landing
                     isLoggedIn={this.state.isLoggedIn}
-                    newPublicLists={this.state.newPublicLists} />
+                    newPublicLists={this.state.newPublicLists}
+                    getNewPublicList={this.state.getNewPublicList}
+                  />
                 )
               }}
             />
@@ -165,7 +177,9 @@ class App extends Component {
                   <SignUp
                     isLoggedIn={this.state.isLoggedIn}
                     handleInput={this.handleInput}
-                    handleSignUp={this.handleSignUp} />
+                    handleSignUp={this.handleSignUp}
+                    getNewPublicList={this.state.getNewPublicList}
+                  />
                 )
               }}
             />
@@ -184,7 +198,8 @@ class App extends Component {
                   <LogIn
                     isLoggedIn={this.state.isLoggedIn}
                     handleInput={this.handleInput}
-                    handleLogIn={this.handleLogIn} />
+                    handleLogIn={this.handleLogIn}
+                    getNewPublicList={this.state.getNewPublicList} />
                 )
               }}
             />

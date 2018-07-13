@@ -37,7 +37,7 @@ class ProfileContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className='myProfile'>
         <Profile
           userData={this.state.userData}
           joinDate={this.state.joinDate}

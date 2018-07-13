@@ -151,7 +151,7 @@ export default class ListContainer extends Component {
   render() {
     if (this.state.showReadingList) {
       return(
-        <div>
+        <div className='myLists'>
           <Grid>
             <Grid.Row centered>
               <Grid.Column width={4}>
@@ -181,7 +181,7 @@ export default class ListContainer extends Component {
     }
     else {
       return(
-        <div>
+        <div className='myLists'>
           <Grid>
             <Grid.Row centered>
               <Grid.Column width={4}>

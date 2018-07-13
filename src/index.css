@@ -4,8 +4,19 @@ body {
   font-family: sans-serif;
 }
 
+p {
+  font-size: 1.1em;
+}
 .pageHeader {
   margin-bottom: 50px;
+}
+
+ .landingPage, .myLists, .myProfile, .signUp, .logIn {
+  margin-top: 100px;
+}
+
+ .about {
+  margin-top: 150px;
 }
 
 .latestLists {
@@ -13,13 +24,28 @@ body {
 }
 
 .ui.card, .ui.cards>.card {
-  width: 100%;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.bio {
+  width: 400px;
+  margin: 0 auto;
 }
 
 h5 {
   -webkit-margin-after: 0em;
 }
 
+.getStarted {
+  margin-top: 25px;
+}
+
+.listInfo, .spacer {
+  margin: 20px 0px;
+}
+
+
 .footer {
-  margin-top: 150px;
+  margin-top: 100px;
 }
