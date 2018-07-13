@@ -17,7 +17,6 @@ __Technologies Used__<br>
     - Express
     - Mongoose
     - MongoDB
-    - Body-Parser
     - Axios
     - Passport
     - JWT-Simple
