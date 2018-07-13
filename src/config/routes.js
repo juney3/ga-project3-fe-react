@@ -12,7 +12,6 @@ import ProfileContainer from '../containers/ProfileContainer';
 //Application routess
 export default (
   <Switch>
-    <Route exact path = '/' component={ Landing } />
     <Route path='/lists' component={ ListContainer } />
     <Route path='/profile' component={ ProfileContainer } />
     <Route path='/search' component={ Search } />

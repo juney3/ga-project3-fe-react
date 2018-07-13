@@ -5,9 +5,9 @@ import { Menu } from 'semantic-ui-react';
 export default class Header extends Component {
   render() {
     let headerItems = [
-      <Link to={'/'} key={1}>
-        <Menu.Item header>Comic.ly</Menu.Item>
-      </Link>
+        <Link to={'/'} key={1} >
+          <Menu.Item header>Comic.ly</Menu.Item>
+        </Link>
     ]
 
     if (this.props.isLoggedIn) {

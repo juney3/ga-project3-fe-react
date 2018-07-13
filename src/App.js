@@ -13,6 +13,8 @@ import SignUp from './components/header/SignUp';
 import LogOut from './components/header/LogOut';
 import Footer from './components/Footer';
 import Routes from './config/routes';
+import Landing from './components/Landing'
+
 
 const USER_ROUTE = "http://localhost:3010/users"
 
@@ -29,7 +31,8 @@ class App extends Component {
       password: '',
       confirmPassword: '',
       isLoggedIn: false,
-      redirect: false
+      redirect: false,
+      newPublicLists: []
     }
 
     // Bind methods
@@ -104,9 +107,11 @@ class App extends Component {
 
   // Get community lists for display on landing page
   getRecentPublicLists() {
-    axios.post('http://localhost:3010/lists/public')
+    axios.get('http://localhost:3010/lists/public')
       .then(response => {
-        console.log("public lists received!", response.data)
+        this.setState({
+          newPublicLists: response.data
+        })
       })
       .catch(err => {
         console.log("this is a public list retrieval error", err)
@@ -114,6 +119,11 @@ class App extends Component {
   }
 
   // Lifecycle methods
+
+  componentWillMount() {
+    this.getRecentPublicLists()
+  }
+
   componentDidMount() {
     if (localStorage.token) {
       this.setState({
@@ -134,11 +144,22 @@ class App extends Component {
         <div className="header">
           < Header
             isLoggedIn={this.state.isLoggedIn}
-            user={this.state.user}/>
+            user={this.state.user}
+            newPublicLists={this.state.newPublicLists}
+          />
         </div>
         <div className="main">
           { Routes }
           <Switch>
+            <Route exact path='/'
+              render={(props) => {
+                return (
+                  <Landing
+                    isLoggedIn={this.state.isLoggedIn}
+                    newPublicLists={this.state.newPublicLists} />
+                )
+              }}
+            />
             <Route path='/signup'
               render={(props) => {
                 return (

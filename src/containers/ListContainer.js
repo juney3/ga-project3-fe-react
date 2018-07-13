@@ -27,7 +27,8 @@ export default class ListContainer extends Component {
       comicIsRead: false,
       selectedComic: [],
       openModal: false,
-      showReadingList: false
+      showReadingList: false,
+      showLoader: false
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -94,7 +95,6 @@ export default class ListContainer extends Component {
       selectedList: list,
       showReadingList: true
     })
-    console.log("on select function registering list", list)
   }
 
   // Function for sending axios call to back end search function
@@ -115,10 +115,6 @@ export default class ListContainer extends Component {
 
   // Function to add a comic from the search results to the reading list
   onAddToList(comic) {
-    console.log("here is the selected comic", comic)
-    console.log("here is the selected list", this.state.selectedList);
-    console.log("add to list function, here is the selected list id", this.state.selectedList._id)
-    console.log("add to list function, here is the selected comic Marvel id", comic.id)
     let resourceUrl = comic.urls[0].url
     let coverImage=`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`
     let date = comic.dates[0].date.substring(0,10)
@@ -139,9 +135,11 @@ export default class ListContainer extends Component {
       user: this.state.user,
     })
       .then(response => {
-        let updatedList = this.state.selectedList
+        console.log("here is the response data", response.data)
+        let tempSelectedList = this.state.selectedList;
+        this.state.selectedList.comics.push(response.data)
         this.setState({
-          selectedList: updatedList
+          selectedList: tempSelectedList
         })
       })
       .catch(error => console.log('Error saving a comic', error))
@@ -187,7 +185,7 @@ export default class ListContainer extends Component {
       return(
         <div>
           <Grid>
-            <Grid.Row>
+            <Grid.Row centered>
               <Grid.Column width={4}>
                 <MyLists
                   handleInput={this.handleInput}
@@ -198,7 +196,7 @@ export default class ListContainer extends Component {
                   selectedList={this.state.selectedList}
                 />
               </Grid.Column>
-              <Grid.Column width={12}>
+              <Grid.Column width={10}>
                 <p>Create or select a list to get started!</p>
               </Grid.Column >
             </Grid.Row>
