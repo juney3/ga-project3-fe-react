@@ -1,51 +1,64 @@
-This project was bootstrapped with [Create React App]
+General Assembly SF WDI45 - Project 3 - "comic.ly" - Front-End Github Repo
 
+Overview<br>
+comic.ly is a MERN (Mongo-Express-React-Node) web app that is designed to help Marvel comics fans find interesting comics and organize them into reading lists. After creating an account, users can create multiple reading lists based on their interests or specific themes. They can also look for Marvel comics by entering a character name and an optional date range to get a list of comics choices to add, based on data provided by the Marvel API. After adding comics, users have a list of comics that they can use to track and manage their reading. 
 
-#### Troubleshooting
+Technologies Used<br>
+Front-end: 
+  * HTML
+  * CSS
+  * React
+  * React Router
+  * Axios
+  * Semantic UI React
 
-##### "/dev/tty: No such a device or address"
+Back-end:
+  * Node
+  * Express
+  * Mongoose
+  * MongoDB
+  * Body-Parser
+  * Axios
+  * Passport
+  * JWT-Simple
+  * Bcrypt-Nodejs
+  * MD5
 
-If, when deploying, you get `/dev/tty: No such a device or address` or a similar error, try the follwing:
+API
+  * Marvel Comics API (https://developer.marvel.com/)
+ 
+Installation<br>
+To install this project, download the front-end and back-end repositories.
+  * Front-end repository: https://github.com/juney3/ga-project3-fe-react
+    - In Terminal, CD to the front-end repository folder, and run ```npm install```
+    - To add the Semantic UI React library, run ``` yarn add semantic-ui-react```
+  * Back-end repository: https://github.com/juney3/ga-project3-be-nem
+    - In Terminal, CD to the back-end repository folder, and run ```npm install```
+    - To seed character data in the database to speed comics retrieval, run: ```node seed.js```
 
-1. Create a new [Personal Access Token](https://github.com/settings/tokens)
-2. `git remote set-url origin https://<user>:<token>@github.com/<user>/<repo>` .
-3. Try `npm run deploy again`
+Project Planning Deliverables<br>
+User story:
+Wireframes:
+ERDs:
 
-### [Heroku](https://www.heroku.com/)
-
-Use the [Heroku Buildpack for Create React App](https://github.com/mars/create-react-app-buildpack).<br>
-You can find instructions in [Deploying React with Zero Configuration](https://blog.heroku.com/deploying-react-with-zero-configuration).
-
-#### Resolving Heroku Deployment Errors
-
-Sometimes `npm run build` works locally but fails during deploy via Heroku. Following are the most common cases.
-
-##### "Module not found: Error: Cannot resolve 'file' or 'directory'"
-
-If you get something like this:
-
-```
-remote: Failed to create a production build. Reason:
-remote: Module not found: Error: Cannot resolve 'file' or 'directory'
-MyDirectory in /tmp/build_1234/src
-```
-
-It means you need to ensure that the lettercase of the file or directory you `import` matches the one you see on your filesystem or on GitHub.
-
-This is important because Linux (the operating system used by Heroku) is case sensitive. So `MyDirectory` and `mydirectory` are two distinct directories and thus, even though the project builds locally, the difference in case breaks the `import` statements on Heroku remotes.
-
-##### "Could not find a required file."
-
-If you exclude or ignore necessary files from the package you will see a error similar this one:
-
-```
-remote: Could not find a required file.
-remote:   Name: `index.html`
-remote:   Searched in: /tmp/build_a2875fc163b209225122d68916f1d4df/public
-remote:
-remote: npm ERR! Linux 3.13.0-105-generic
-remote: npm ERR! argv "/tmp/build_a2875fc163b209225122d68916f1d4df/.heroku/node/bin/node" "/tmp/build_a2875fc163b209225122d68916f1d4df/.heroku/node/bin/npm" "run" "build"
-```
-
-In this case, ensure that the file is there with the proper lettercase and that’s not ignored on your local `.gitignore` or `~/.gitignore_global`.
-
+Unsolved Problems<br>
+  * No redirect on signup or login
+  * Modals won't close on form submit
+  * No update or delete functionality (ran out of time)
+  
+Future features<br>
+  App features<br>
+    * Refactor app to include Redux and a more robust authentication/authorization system
+    * Improve UI/UX
+    * Expand search options
+    * Look into possibly incorporating other APIs
+  User features<br>
+    * Modify and delete lists
+    * Modify and delete comic information from lists
+    * Track whether a comic was read or a list is complete
+    * Modify user information / delete user account
+  Social features<br>
+    * View other users' shared lists
+    * Upvote / downvote shared lists
+    * Follow other users
+  
