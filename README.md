@@ -49,7 +49,7 @@ __Future features__<br>
  * App features<br>
    - Refactor app to include Redux and a more robust authentication/authorization system
    - Improve UI/UX
-   - Expand search options
+   - Expand search options and features
    - Look into possibly incorporating other APIs
  * User features<br>
    - Modify and delete lists
