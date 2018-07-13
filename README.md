@@ -48,17 +48,17 @@ Unsolved Problems<br>
   
 Future features<br>
  * App features<br>
-  - Refactor app to include Redux and a more robust authentication/authorization system
-  - Improve UI/UX
-  - Expand search options
-  - Look into possibly incorporating other APIs
+   - Refactor app to include Redux and a more robust authentication/authorization system
+   - Improve UI/UX
+   - Expand search options
+   - Look into possibly incorporating other APIs
  * User features<br>
-  - Modify and delete lists
-  - Modify and delete comic information from lists
-  - Track whether a comic was read or a list is complete
-  - Modify user information / delete user account
+   - Modify and delete lists
+   - Modify and delete comic information from lists
+   - Track whether a comic was read or a list is complete
+   - Modify user information / delete user account
  * Social features<br>
-  - View other users' shared lists
-  - Upvote / downvote shared lists
-  - Follow other users
+   - View other users' shared lists
+   - Upvote / downvote shared lists
+   - Follow other users
   
