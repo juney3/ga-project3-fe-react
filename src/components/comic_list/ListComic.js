@@ -3,6 +3,7 @@ import { Button, Card, Checkbox, Icon, Image } from 'semantic-ui-react';
 
 export default class ListComic extends Component {
   render() {
+    let date = this.props.comic.comicOnSaleDate.slice(0, 10);
 
     return (
       <Card fluid>
@@ -24,7 +25,7 @@ export default class ListComic extends Component {
               Issue #: {this.props.comic.comicIssueNumber}
             </Card.Header>
             <Card.Header as='h5'>
-              Sale date: {this.props.comic.comicOnSaleDate}
+              Sale date: {date}
             </Card.Header>
             <Card.Header as='h5'>
               Page count: {this.props.comic.comicPageCount}

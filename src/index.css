@@ -9,7 +9,7 @@ body {
 }
 
 .latestLists {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .ui.card, .ui.cards>.card {
@@ -21,5 +21,5 @@ h5 {
 }
 
 .footer {
-  margin-top: 50px;
+  margin-top: 150px;
 }

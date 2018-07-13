@@ -6,7 +6,7 @@ export default class Header extends Component {
   render() {
     let headerItems = [
         <Link to={'/'} key={1} >
-          <Menu.Item header>Comic.ly</Menu.Item>
+          <Menu.Item header>comic.ly</Menu.Item>
         </Link>
     ]
 
@@ -46,11 +46,15 @@ export default class Header extends Component {
       )
     }
 
-    headerItems.push(<Menu.Menu position='right' key={7}>
-      <Menu.Item>
-        About
-      </Menu.Item>
-    </Menu.Menu>)
+    headerItems.push(
+        <Menu.Menu position='right' key={7}>
+        <Link to={ '/about' } >
+          <Menu.Item>
+            About
+          </Menu.Item>
+        </Link>
+      </Menu.Menu>
+    )
 
     return(
       <div className="pageHeader">

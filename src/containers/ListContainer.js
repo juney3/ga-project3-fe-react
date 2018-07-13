@@ -26,9 +26,7 @@ export default class ListContainer extends Component {
       comicOnSaleDate: '',
       comicIsRead: false,
       selectedComic: [],
-      openModal: false,
       showReadingList: false,
-      showLoader: false
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);

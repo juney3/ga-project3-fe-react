@@ -65,7 +65,6 @@ class App extends Component {
   }
 
   handleSignUp(event) {
-    console.log("User is signing up");
     event.preventDefault();
     axios.post(`${USER_ROUTE}/signup`, {
       firstName: this.state.firstName,
@@ -77,12 +76,12 @@ class App extends Component {
       .then(response => {
         localStorage.token = response.data.token;
         localStorage.user = response.data.user;
-        console.log("Here is the user id from the response", response.data.user);
         this.setState({
           isLoggedIn: true,
           user: response.data.user,
           redirect: true
         })
+        this.props.history.push('/lists');
       })
       .catch(err => console.log("This is a user signup error", err))
   }

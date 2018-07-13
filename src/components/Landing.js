@@ -22,11 +22,11 @@ export default class Landing extends Component {
         <Grid centered columns={2}>
             <Grid.Column>
               <Grid.Row className="welcome">
-                <Header as='h2'>Welcome to Comic.ly</Header>
+                <Header as='h2'>Welcome to comic.ly</Header>
                 <Header as='h4'>Manage your comics reading habit, powered by the mighty Marvel API!</Header>
               </Grid.Row>
               <Grid.Row>
-                To get started, sign up for an account or log in!
+                <p>To get started, sign up for an account or log in!</p>
               </Grid.Row>
               <Grid.Row>
                 <div className="latestLists">
